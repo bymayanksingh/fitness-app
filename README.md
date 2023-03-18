@@ -46,7 +46,48 @@ sequenceDiagram
     Auth0-->>Server: Revokes access token
 ```
 
-Sign up flow
+Profile CRUD flow
 
 ```mermaid
+sequenceDiagram
+    participant User
+    participant Client
+    participant Server
+    participant Database
+    User->>Client: Sends request to create profile
+    Client->>Server: Sends request with user information
+    Server->>Database: Saves user information in profile table
+    Server-->>Client: Sends success response
+    alt Profile creation successful
+        Client->>User: Displays success message and redirects to dashboard
+    else Profile creation failed
+        Server-->>Client: Sends error message
+        Client->>User: Displays error message and prompts for correction
+    end
+    User->>Client: Requests to view profile
+    Client->>Server: Sends request with user ID
+    Server->>Database: Retrieves user information from profile table
+    Database-->>Server: Sends user information
+    Server-->>Client: Sends user information
+    Client->>User: Displays user information
+    User->>Client: Sends request to update profile
+    Client->>Server: Sends request with updated user information
+    Server->>Database: Updates user information in profile table
+    Server-->>Client: Sends success response
+    alt Profile update successful
+        Client->>User: Displays success message and redirects to dashboard
+    else Profile update failed
+        Server-->>Client: Sends error message
+        Client->>User: Displays error message and prompts for correction
+    end
+    User->>Client: Sends request to delete profile
+    Client->>Server: Sends request with user ID
+    Server->>Database: Deletes user information from profile table
+    Server-->>Client: Sends success response
+    alt Profile deletion successful
+        Client->>User: Displays success message and logs out
+    else Profile deletion failed
+        Server-->>Client: Sends error message
+        Client->>User: Displays error message and prompts for retry
+    end
 ```
