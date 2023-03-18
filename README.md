@@ -218,3 +218,30 @@ sequenceDiagram
     end
 ```
 
+Workout
+```mermaid
+sequenceDiagram
+    participant User
+    participant System
+
+    User ->> System: Log in with username and password
+    System ->> User: Verifies credentials and displays dashboard
+    User ->> System: Selects "Workout" tab
+    System ->> User: Retrieves workout history and displays in a table
+    User ->> System: Selects "New Workout" button
+    System ->> User: Displays workout form with list of exercises to choose from
+    User ->> System: Selects an exercise
+    System ->> User: Retrieves exercise details and displays in the form
+    User ->> System: Enters number of sets, reps, and weight for each set
+    User ->> System: Saves workout
+    System ->> User: Displays workout summary, including total time and calories burned
+    User ->> System: Selects "Progress" tab
+    System ->> User: Retrieves progress data and displays in a chart
+    User ->> System: Selects a date range to filter progress data
+    System ->> User: Updates chart with filtered data
+    User ->> System: Sets a new goal for a specific exercise or overall fitness
+    System ->> User: Saves goal and displays confirmation message
+    User ->> System: Logs out
+    System ->> User: Ends session and clears user data
+```
+
