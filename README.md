@@ -218,7 +218,7 @@ sequenceDiagram
     end
 ```
 
-Workout
+Workout Tracking
 ```mermaid
 sequenceDiagram
     participant User
@@ -243,5 +243,43 @@ sequenceDiagram
     System ->> User: Saves goal and displays confirmation message
     User ->> System: Logs out
     System ->> User: Ends session and clears user data
+```
+
+Nutrition Tracking
+```mermaid
+sequenceDiagram
+    participant User
+    participant Client
+    participant Server
+    participant Database
+
+    User->>+Client: Opens nutrition tracking feature
+    Client->>+Server: Requests list of foods
+    Server-->>-Client: Returns list of foods
+    Client->>+User: Displays list of foods
+    User->>+Client: Selects a food from the list
+    Client->>+Server: Requests food details
+    Server-->>-Client: Returns food details
+    Client->>+User: Displays food details
+    User->>+Client: Enters quantity of food consumed
+    Client->>+Server: Sends food consumption data
+    Server->>+Database: Saves food consumption data
+    Database-->>-Server: Returns success status
+    Server-->>-Client: Returns success status
+    Client->>+User: Displays success message
+    User->>+Client: Views nutrition summary
+    Client->>+Server: Requests nutrition summary
+    Server-->>-Client: Returns nutrition summary
+    Client->>+User: Displays nutrition summary
+    User->>+Client: Sets nutritional goals
+    Client->>+Server: Sends nutritional goals
+    Server->>+Database: Saves nutritional goals
+    Database-->>-Server: Returns success status
+    Server-->>-Client: Returns success status
+    Client->>+User: Displays success message
+    User->>+Client: Views progress chart
+    Client->>+Server: Requests progress data
+    Server-->>-Client: Returns progress data
+    Client->>+User: Displays progress chart
 ```
 
