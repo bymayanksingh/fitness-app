@@ -1,5 +1,7 @@
 # fitness-app
 
+Sign in flow:
+
 ```mermaid
 sequenceDiagram
     participant User
@@ -36,4 +38,9 @@ sequenceDiagram
     Client->>Server: Sends logout request with access token
     Server->>Auth0: Sends access token for revocation
     Auth0-->>Server: Revokes access token
+```
+
+Sign up flow
+
+```mermaid
 ```
