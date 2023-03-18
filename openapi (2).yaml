@@ -1,0 +1,81 @@
+openapi: 3.0.0
+info:
+  title: Profile Privacy API
+  version: 1.0.0
+  description: API for managing user profile privacy settings
+servers:
+  - url: https://api.example.com
+    description: Production server
+tags:
+  - name: profile
+    description: APIs for managing user profile
+paths:
+  /profile/privacy:
+    get:
+      tags:
+        - profile
+      summary: Get user's current privacy settings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  public_profile:
+                    type: boolean
+                    description: Flag to indicate whether the user's profile is public or private
+                  allow_contacts:
+                    type: boolean
+                    description: Flag to indicate whether the user allows contacts to view their profile
+                  allow_location:
+                    type: boolean
+                    description: Flag to indicate whether the user allows others to view their location
+    put:
+      tags:
+        - profile
+      summary: Update user's privacy settings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                public_profile:
+                  type: boolean
+                  description: Flag to indicate whether the user's profile is public or private
+                allow_contacts:
+                  type: boolean
+                  description: Flag to indicate whether the user allows contacts to view their profile
+                allow_location:
+                  type: boolean
+                  description: Flag to indicate whether the user allows others to view their location
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  public_profile:
+                    type: boolean
+                    description: Flag to indicate whether the user's profile is public or private
+                  allow_contacts:
+                    type: boolean
+                    description: Flag to indicate whether the user allows contacts to view their profile
+                  allow_location:
+                    type: boolean
+                    description: Flag to indicate whether the user allows others to view their location
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Description of the error
