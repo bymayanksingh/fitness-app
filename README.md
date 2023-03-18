@@ -91,3 +91,26 @@ sequenceDiagram
         Client->>User: Displays error message and prompts for retry
     end
 ```
+
+Privacy Settings
+```mermaid
+sequenceDiagram
+    participant User
+    participant Client
+    participant Server
+    User->>Client: Navigates to Privacy Settings page
+    Client->>Server: Sends request for user's current privacy settings
+    Server-->>Client: Returns current privacy settings
+    Client->>User: Displays current privacy settings
+    User->>Client: Makes changes to privacy settings
+    Client->>Server: Sends updated privacy settings
+    Server-->>Client: Validates updated privacy settings
+    alt Settings valid
+        Server-->>Server: Updates user's privacy settings in database
+        Server-->>Client: Returns success message
+        Client->>User: Displays success message
+    else Settings invalid
+        Server-->>Client: Returns error message
+        Client->>User: Displays error message
+    end
+```
