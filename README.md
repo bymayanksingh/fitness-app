@@ -114,3 +114,58 @@ sequenceDiagram
         Client->>User: Displays error message
     end
 ```
+
+Profile Discovery
+```mermaid
+sequenceDiagram
+    participant User
+    participant Client
+    participant Server
+    participant Database
+    User->>Client: Requests to discover profiles
+    Client->>Server: Sends request with search parameters
+    Server->>Database: Searches database for matching profiles
+    Database-->>Server: Returns list of matching profiles
+    Server-->>Client: Sends list of matching profiles
+    Client->>User: Displays list of matching profiles
+    User->>Client: Requests to view a profile
+    Client->>Server: Sends request with profile ID
+    Server->>Database: Searches database for profile with given ID
+    Database-->>Server: Returns profile information
+    Server-->>Client: Sends profile information
+    Client->>User: Displays profile information
+```
+
+Profile Follow/ Unfollow 
+```mermaid
+sequenceDiagram
+    participant User1
+    participant User2
+    participant Client1
+    participant Client2
+    participant Server
+    participant Database
+    User1->>Client1: Requests to follow User2
+    Client1->>Server: Sends follow request with User2's ID
+    Server->>Database: Adds User2's ID to User1's following list
+    Database-->>Server: Confirms update to following list
+    Server-->>Client1: Sends confirmation of follow
+    Client1->>User1: Displays confirmation of follow
+    User2->>Server: Sends notification of new follower
+    Server->>Database: Adds User1's ID to User2's followers list
+    Database-->>Server: Confirms update to followers list
+    Server-->>Client2: Sends notification of new follower
+    Client2->>User2: Displays notification of new follower
+    User1->>Client1: Requests to unfollow User2
+    Client1->>Server: Sends unfollow request with User2's ID
+    Server->>Database: Removes User2's ID from User1's following list
+    Database-->>Server: Confirms update to following list
+    Server-->>Client1: Sends confirmation of unfollow
+    Client1->>User1: Displays confirmation of unfollow
+    User2->>Server: Sends notification of unfollower
+    Server->>Database: Removes User1's ID from User2's followers list
+    Database-->>Server: Confirms update to followers list
+    Server-->>Client2: Sends notification of unfollower
+    Client2->>User2: Displays notification of unfollower
+```
+
