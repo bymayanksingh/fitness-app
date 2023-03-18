@@ -310,3 +310,22 @@ sequenceDiagram
     Platform-->>-User: Sends Personalized Recommendations
 ```
 
+Cookie & Local Storage
+```mermaid
+sequenceDiagram
+    participant User
+    participant App
+    participant Browser
+    participant Server
+    User->>Browser: Navigates to app
+    Browser->>Server: Sends request for app
+    Server->>Browser: Sends app with cookie/local storage/session storage settings
+    Browser->>App: Loads app with initial cookie/local storage/session storage values
+    User->>App: Interacts with app
+    App->>Browser: Updates cookie/local storage/session storage values
+    Browser->>Server: Sends request with updated cookie/local storage/session storage values
+    Server->>App: Processes request and sends updated data
+    App->>Browser: Displays updated data
+    Browser->>User: Shows updated data
+```
+
