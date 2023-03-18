@@ -283,3 +283,30 @@ sequenceDiagram
     Client->>+User: Displays progress chart
 ```
 
+Personalized Recommendation
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Platform
+    participant RecommendationEngine
+    User->>+Platform: Requests Personalized Recommendations
+    Platform->>+RecommendationEngine: Sends Recommendation Request
+    RecommendationEngine->>+User: Requests User Information
+    User-->>-RecommendationEngine: Sends User Information
+    RecommendationEngine->>+Database: Retrieves User Information
+    Database-->>-RecommendationEngine: Sends User Information
+    RecommendationEngine->>+MachineLearning: Analyzes User Information
+    MachineLearning-->>-RecommendationEngine: Sends Analysis Results
+    RecommendationEngine->>+Database: Retrieves Exercise and Meal Data
+    Database-->>-RecommendationEngine: Sends Exercise and Meal Data
+    RecommendationEngine->>+MachineLearning: Analyzes Exercise and Meal Data
+    MachineLearning-->>-RecommendationEngine: Sends Analysis Results
+    RecommendationEngine->>+Database: Retrieves Past Recommendations
+    Database-->>-RecommendationEngine: Sends Past Recommendations
+    RecommendationEngine->>+MachineLearning: Analyzes Past Recommendations
+    MachineLearning-->>-RecommendationEngine: Sends Analysis Results
+    RecommendationEngine->>+Platform: Sends Personalized Recommendations
+    Platform-->>-User: Sends Personalized Recommendations
+```
+
