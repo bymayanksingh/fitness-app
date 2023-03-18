@@ -1,6 +1,6 @@
 # fitness-app
 
-Sign in flow:
+Sign up & Sign in flow:
 
 ```mermaid
 sequenceDiagram
@@ -8,6 +8,12 @@ sequenceDiagram
     participant Client
     participant Auth0
     participant Server
+    User->>Client: Requests to sign up
+    Client->>Server: Sends sign-up request with user details
+    Server->>Auth0: Sends sign-up request with user details
+    Auth0-->>Server: Validates user details
+    Server-->>Client: Sends confirmation of successful sign-up
+    Client->>User: Displays confirmation message
     User->>Client: Sends login credentials
     Client->>Server: Sends login request
     Server->>Auth0: Sends login request with credentials
