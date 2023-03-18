@@ -193,3 +193,28 @@ sequenceDiagram
     end
 ```
 
+User Analytics
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Client
+    participant Server
+    participant Analytics
+    User->>Client: Interacts with the app
+    Client->>Server: Sends requests with user data
+    Server->>Analytics: Sends user data for analysis
+    Analytics->>Server: Analyzes user data
+    Server->>Client: Sends response with analyzed data
+    Client->>User: Displays analyzed data
+    User->>Client: Interacts with the app
+    Client->>Server: Sends requests with user data
+    Server->>Analytics: Sends user data for analysis
+    Analytics->>Server: Analyzes user data
+    Server->>Client: Sends response with analyzed data
+    Client->>User: Displays analyzed data
+    loop Collecting User Data
+        Server->>Analytics: Collects user data
+    end
+```
+
