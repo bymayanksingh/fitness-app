@@ -169,3 +169,27 @@ sequenceDiagram
     Client2->>User2: Displays notification of unfollower
 ```
 
+User Notification
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Client
+    participant Notification Service
+    participant Server
+
+    User->>Client: Performs an action that triggers a notification
+    Client->>Server: Sends request to trigger notification
+    Server->>Notification Service: Sends request to send notification
+    Notification Service->>Server: Sends confirmation of request
+    Server->>Client: Sends confirmation of trigger request
+    Client->>User: Displays confirmation of trigger request
+
+    loop Notification Delivery
+        Notification Service->>User: Sends notification
+        User->>Client: Opens notification
+        Client->>Server: Sends confirmation of notification receipt
+        Server->>Notification Service: Sends confirmation of notification receipt
+    end
+```
+
