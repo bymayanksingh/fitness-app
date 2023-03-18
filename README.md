@@ -1,7 +1,19 @@
 # fitness-app
 
-Sign up & Sign in flow:
+Features:
 
+- Sign up / Sign in flow.
+- Profile CRUD flow.
+- Privacy settings.
+- Profile discovery.
+- Profile follow/unfollow.
+- Nutrition Tracker.
+- Workout Tracker.
+- Notification System.
+- Analytics.
+- Personalized Recommendation.
+
+Sign up & Sign in flow:
 ```mermaid
 sequenceDiagram
     participant User
@@ -47,7 +59,6 @@ sequenceDiagram
 ```
 
 Profile CRUD flow
-
 ```mermaid
 sequenceDiagram
     participant User
@@ -170,7 +181,6 @@ sequenceDiagram
 ```
 
 User Notification
-
 ```mermaid
 sequenceDiagram
     participant User
@@ -194,7 +204,6 @@ sequenceDiagram
 ```
 
 User Analytics
-
 ```mermaid
 sequenceDiagram
     participant User
@@ -284,7 +293,6 @@ sequenceDiagram
 ```
 
 Personalized Recommendation
-
 ```mermaid
 sequenceDiagram
     participant User
