@@ -1,0 +1,99 @@
+openapi: 3.0.0
+info:
+  title: Profile API
+  description: API for managing user profiles
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000
+paths:
+  /profile:
+    post:
+      summary: Create a new profile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Profile"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+    get:
+      summary: Get user profile information
+      parameters:
+        - name: id
+          in: query
+          required: true
+          description: User ID
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Profile"
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+    put:
+      summary: Update an existing profile
+      parameters:
+        - name: id
+          in: query
+          required: true
+          description: User ID
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Profile"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+    delete:
+      summary: Delete an existing profile
+      parameters:
+        - name: id
+          in: query
+          required: true
+          description: User ID
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+components:
+  schemas:
+    Profile:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: User ID
+        name:
+          type: string
+          description: User's full name
+        email:
+          type: string
+          description: User's email address
+        password:
+          type: string
+          description: User's password (hashed)
+      required:
+        - name
+        - email
+        - password
